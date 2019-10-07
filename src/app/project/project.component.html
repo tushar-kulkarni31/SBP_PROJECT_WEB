@@ -1,0 +1,160 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6">
+            <form (ngSubmit)="onSaveTask()" #addForm="ngForm">
+                <div class="form-group row">
+                    <label for="task" class="col-sm-3 col-form-label">Project: </label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="projectName" [ngModel]="projectToEdit?.projectName" name="projectName" required />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-6">
+                        <input type="checkbox" class="form-control" id="setStartEndDate" [ngModel]="setStartEndDate" name="setStartEndDate" required />
+                        <label for="setStartEndDate" class="col-form-label">&nbsp; Set Project Start and End Date: </label>
+                    </div>
+                    <div class="col-sm-3">
+                        <input type="date" class="form-control" id="start_date" [ngModel]="projectToEdit?.startDate" name="start_date" [disabled]="!setStartEndDate" placeholder="Start Date" required />
+                    </div>
+                    <div class="col-sm-3">
+                        <input type="date" class="form-control" id="endDate" [disabled]="!setStartEndDate" [ngModel]="projectToEdit?.endDate" name="endDate" placeholder="End Date" required />
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="customRange2" class="col-sm-3 col-form-label">Priority:
+          </label>
+                    <div class="col-sm-9">
+                        <div class="row">
+                            <div class="col">0</div>
+                            <div class="col align-right">30</div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <input type="range" class="custom-range" id="priority" min="0" max="30" value="1" [ngModel]="projectToEdit?.priority" name="task_priority" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="manager" class="col-sm-3 col-form-label">Manager:
+          </label>
+                    <div class="col-sm-9 manager-txt">
+                        <input type="text" class="form-control" id="manager" [ngModel]="projectToEdit?.manager" name="manager" placeholder="" disabled required />
+                        <!-- <button type="button" data-toggle="modal" data-target="#exampleModal">
+              Search
+            </button> -->
+
+
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-3"></div>
+                    <div class="col-sm-9">
+                        <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+                            <div class="btn-group mr-4" role="group" aria-label="First group">
+                                <button type="submit" class="btn btn-success" [disabled]='!addForm.valid'>
+                  Add
+                </button>
+                            </div>
+                            <div class="btn-group mr-4" role="group" aria-label="Second group">
+                                <button type="button" class="btn btn-outline-warning" (click)='onReset()'>
+                  Reset
+                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class='project-details col-sm-8'>
+            <hr>
+            <div id="form2" class='row'>
+                <div class="form-group col-md-12 row">
+                    <input type="text" class="form-control" id="search" [ngModel]="search" name="search" placeholder="Search ..." />
+                </div>
+                <div class="sort-group form-group col-md-12 row">
+                    Sort By:
+                    <div class="col-md-4">
+                        <div class="btn-group mr-1" role="group">
+                            <button type="button" class="btn btn-outline-warning" (click)='sortByFirstName()'>
+                Start Date
+              </button>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="btn-group mr-1" role="group">
+                            <button type="button" class="btn btn-outline-warning" (click)='sortByLastName()'>
+                End Date
+              </button>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="btn-group mr-1" role="group">
+                            <button type="button" class="btn btn-outline-warning" (click)='sortByEmpId()'>
+                Priority
+              </button>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="btn-group mr-1" role="group">
+                            <button type="button" class="btn btn-outline-warning" (click)='sortByEmpId()'>
+                Completed
+              </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="for-loop">
+                <div class="list-tem row">
+
+                    <div class='col-md-8 details-box'>
+                        <div class="col-md-8 bg-disabled">
+                            <div class="form-group row">Project: New Whales Projects</div>
+                            <div>
+                                <div class="form-group row">
+                                    <span class="left-fields">No Of Tasks: 89 </span>
+                                    <span class="right-fields">Start Date:10/12/2019</span>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="left-fields">Completed: Yes</div>
+                                    <div class="right-fields">End Date:11/12/2019</div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="col-md-4">
+                            <span class="priority-header">Priority </span>
+                            <div class="bg-disabled priority-box"> 30</div>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-4">
+                        <div class="col-sm-9">
+                            <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+                                <div class="btn-group mr-4 mb-2" role="group" aria-label="First group">
+                                    <button type="submit" class="btn btn-success" (click)='editUser(user.empId)'>
+                    Update
+                  </button>
+                                </div>
+                                <div class="btn-group mr-4" role="group" aria-label="Second group">
+                                    <button type="button" class="btn btn-outline-warning" (click)='deleteUser(user.empId)'>
+                    Suspend
+                  </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+
+</div>

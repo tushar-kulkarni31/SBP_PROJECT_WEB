@@ -1,0 +1,59 @@
+#setStartEndDate {
+    max-width: 8% !important;
+    display: inline !important;
+}
+
+.container {
+    margin-top: 20px
+}
+
+.manager-txt {
+    display: inherit !important;
+}
+
+.user-search {
+    margin-left: 10px;
+    padding-left: 10px;
+}
+
+.sort-group .col-md-4 {
+    max-width: 20.333%;
+}
+
+.for-loop .list-item {
+    border-top-style: dotted !important;
+    border-top-color: blue !important;
+    padding-top: 5px !important;
+}
+
+.details-box {
+    display: inherit !important;
+}
+
+.bg-disabled {
+    background-color: #e9ecef;
+    opacity: 1;
+    margin: 1%
+}
+
+.left-fields {
+    margin-right: 10%;
+}
+
+.priority-box {
+    height: 96px;
+    padding-left: 40%;
+    padding-top: 34px;
+}
+
+.priority-header {
+    padding-left: 25%;
+}
+
+.col .align-right {
+    padding-left: 80%;
+}
+
+.user-search {
+    border-radius: 23px;
+}

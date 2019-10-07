@@ -1,0 +1,33 @@
+.container {
+    padding: 2%;
+    float: left;
+}
+
+input.ng-invalid.ng-touched {
+    border: 1px solid red;
+}
+
+.align-left {
+    text-align: left;
+}
+
+.align-right {
+    text-align: right;
+}
+
+.parent-task-ckb {
+    padding-left: 58px;
+    margin-left: 19%;
+}
+
+.parent-tsk-lbl {
+    margin-left: -4%;
+}
+
+.user-search {
+    border-radius: 23px;
+}
+
+.date-field {
+    margin-left: -4%;
+}

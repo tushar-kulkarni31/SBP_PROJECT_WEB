@@ -1,0 +1,89 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6">
+            <form (ngSubmit)="onSaveTask()" #addForm="ngForm">
+                <div class="form-group row">
+                    <label for="projectName" class="col-sm-3 col-form-label">Project: </label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" id="projectName" [ngModel]="taskToEdit?.projectName" name="projectName" disabled required />
+                    </div>
+                    <div class="col-sm-3">
+                        <button type="button" class="btn btn-info col-sm-9 user-search">
+                          Search
+                        </button>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="task" class="col-sm-3 col-form-label">Task: </label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="task" [ngModel]="taskToEdit?.task" name="task" required />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-2 parent-task-ckb">
+                        <input type="checkbox" class="form-control" id="parentTaskCkb" [ngModel]="taskToEdit?.task" name="parentTaskCkb" required />
+                    </div>
+                    <label for="parentTaskCkb" class="col-sm-3 col-form-label parent-tsk-lbl">Parent Task </label>
+                </div>
+
+                <div class="form-group row">
+                    <label for="customRange2" class="col-sm-3 col-form-label">Priority:
+          </label>
+                    <div class="col-sm-9">
+                        <div class="row">
+                            <div class="col">0</div>
+                            <div class="col align-right">30</div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <input type="range" class="custom-range" id="priority" min="0" max="30" value="1" [ngModel]="taskToEdit?.priority" name="task_priority" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="parentTask" class="col-sm-3 col-form-label">Parent Task: </label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" id="parentTask" [ngModel]="taskToEdit?.parentTask" name="parentTask" disabled required />
+                    </div>
+                    <div class="col-sm-3">
+                        <button type="button" class="btn btn-info col-sm-9 user-search">
+              Search
+            </button>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="start_date" class="col-sm-2 col-form-label date-field">Start Date:</label>
+                    <div class="col-sm-4 date-field">
+                        <input type="date" class="form-control" id="start_date" [ngModel]="taskToEdit?.startDate | date:'yyyy-MM-dd'" name="start_date" placeholder="" required />
+                    </div>
+                    <label for="end_date" class="col-sm-3 col-form-label date-field">End Date:</label>
+                    <div class="col-sm-4 end-date date-field">
+                        <input type="date" class="form-control" id="end_date" [ngModel]="taskToEdit?.endDate | date:'yyyy-MM-dd'" name="end_date" placeholder="" required />
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-sm-3"></div>
+                    <div class="col-sm-9">
+                        <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+                            <div class="btn-group mr-4" role="group" aria-label="First group">
+                                <button type="submit" class="btn btn-success" [disabled]='!addForm.valid'>
+                  Save Task
+                </button>
+                            </div>
+                            <div class="btn-group mr-4" role="group" aria-label="Second group">
+                                <button type="button" class="btn btn-outline-warning" (click)='onReset()'>
+                  Reset
+                </button>
+                            </div>
+                        </div>
+                        <p *ngIf='taskAdded'>New task was added!</p>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
